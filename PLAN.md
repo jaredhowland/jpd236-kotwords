@@ -23,7 +23,7 @@ Convert the entire `kotwords` codebase from Kotlin Multiplatform to Python while
 4. Produce a feature matrix from tests (format x behavior x edge cases).
 5. Capture current CI behavior and artifact outputs (library, CLI binaries, web dist).
 
-## 3.1) Generated/static asset migration requirements
+### 3.1) Generated/static asset migration requirements
 - Preserve behavior of generated or large static sources, especially:
   - `formats/unidecode/*` transliteration tables
   - `formats/pdf/BuiltInFontMetrics.kt` equivalent metrics data
@@ -123,7 +123,7 @@ For each format:
   - identical or intentionally normalized output for critical formats (PUZ/JPZ/IPUZ/PDF metadata expectations)
   - no unplanned performance regressions for large puzzles (parse, convert, PDF generation)
 
-## 7.1) Traceability requirements
+### 7.1) Traceability requirements
 - Every Kotlin source file must map to one of:
   1. Python implementation file
   2. Explicitly retired feature decision
