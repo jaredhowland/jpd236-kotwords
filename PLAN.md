@@ -1,5 +1,9 @@
 # PLAN: Full Kotlin-to-Python Conversion for kotwords
 
+## 0) Plan status
+- This document is the canonical migration plan for repository-level Kotlin-to-Python conversion scope.
+- Scope is intentionally limited to parity with existing library, CLI, and web behaviors before any feature expansion.
+
 ## 1) Objective
 Convert the entire `kotwords` codebase from Kotlin Multiplatform to Python while preserving behavior, format compatibility, test coverage expectations, and release capabilities (library + CLI + web tooling equivalent).
 
