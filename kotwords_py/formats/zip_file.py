@@ -28,8 +28,6 @@ class Zip:
                     if not entry.is_dir():
                         with archive.open(entry, mode="r") as zipped_file:
                             return zipped_file.read()
-        except InvalidZipError:
-            raise
         except Exception as ex:
             raise InvalidZipError("Error unzipping data") from ex
 
