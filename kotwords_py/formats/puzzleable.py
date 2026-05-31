@@ -32,3 +32,15 @@ class Puzzleable(ABC):
     async def create_puzzle(self) -> "Puzzle":
         """Parse and return data as a Puzzle."""
         raise NotImplementedError
+
+
+class DelegatingPuzzleable(Puzzleable):
+    """Base class for containers that delegate to another Puzzleable."""
+
+    @abstractmethod
+    async def get_puzzleable(self) -> Puzzleable:
+        """Return the underlying puzzleable container."""
+        raise NotImplementedError
+
+    async def create_puzzle(self) -> "Puzzle":
+        return await (await self.get_puzzleable()).as_puzzle()

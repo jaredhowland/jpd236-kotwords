@@ -9,6 +9,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 ## 1) Objective
 - Status: In progress.
 - Initial Python scaffold has been created to start porting core models.
+- Added foundational delegation parity (`DelegatingPuzzleable`) and async cache contract tests.
 
 ## 2) Scope and parity targets
 - Status: In progress.
@@ -37,10 +38,12 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 ### Phase A: Foundation and shared types
 - Status: Started.
 - Implemented initial Python model primitives for `Puzzle` and `Crossword` flows.
+- Added Python async contract tests for base conversion caching behavior.
 
 ### Phase B: Platform abstraction equivalents
 - Status: Started (partial).
 - Added `Puzzleable` abstraction with async cached `as_puzzle()` behavior.
+- Added `DelegatingPuzzleable` abstraction parity for composed puzzle containers.
 
 ### Phase C: Core format engines
 - Status: Not started.
@@ -61,6 +64,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Status: In progress.
 - Repository baseline check (`./gradlew check`) fails in this environment due to blocked Kotlin/Native download host.
 - Existing JVM/JS validation remains the near-term verification path for non-native changes.
+- Added Python scaffold validation via `python -m unittest discover -s tests -p "test_*.py"`.
 
 ## 8) Edge cases that must be explicitly covered
 - Status: Not started.

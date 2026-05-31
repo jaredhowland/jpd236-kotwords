@@ -1,5 +1,5 @@
 """Format abstractions for the Python migration scaffold."""
 
-from .puzzleable import InvalidFormatError, Puzzleable
+from .puzzleable import DelegatingPuzzleable, InvalidFormatError, Puzzleable
 
-__all__ = ["InvalidFormatError", "Puzzleable"]
+__all__ = ["DelegatingPuzzleable", "InvalidFormatError", "Puzzleable"]

@@ -21,3 +21,13 @@
 - **Decision:** Track migration state in `PROGRESS.md` using the section outline of `PLAN.md`.
 - **Reasoning:** Ensures traceability between long-term plan and implementation cadence.
 - **Consequence:** Progress updates must be maintained alongside each implementation increment.
+
+### Decision 5: Add `DelegatingPuzzleable` before format-engine ports
+- **Decision:** Implement Python `DelegatingPuzzleable` now, even before concrete format converters.
+- **Reasoning:** Composite adapters are already a core pattern in Kotlin and this keeps Python architecture aligned early.
+- **Consequence:** Future parser/adapter ports can reuse a tested delegation primitive instead of recreating ad hoc forwarding logic.
+
+### Decision 6: Add Python async caching contract tests in-repo
+- **Decision:** Add `unittest`-based async tests for `Puzzleable.as_puzzle()` and `DelegatingPuzzleable`.
+- **Reasoning:** Caching/delegation behavior is foundational and can regress silently without direct tests.
+- **Consequence:** Python scaffold work now has a direct parity guardrail while remaining dependency-free.
