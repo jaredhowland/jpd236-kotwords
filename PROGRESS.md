@@ -14,6 +14,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 ## 2) Scope and parity targets
 - Status: In progress.
 - Started with core model scaffolding (`kotwords_py/model`) and conversion abstraction (`kotwords_py/formats`).
+- Added shared ZIP abstraction parity for compressed format support (`kotwords_py/formats/zip_file.py`).
 - Format engines, CLI, and web parity are not implemented yet.
 
 ## 3) Baseline inventory (must be frozen before migration)
@@ -44,6 +45,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Status: Started (partial).
 - Added `Puzzleable` abstraction with async cached `as_puzzle()` behavior.
 - Added `DelegatingPuzzleable` abstraction parity for composed puzzle containers.
+- Added Python `Zip.zip()` / `Zip.unzip()` and `InvalidZipError` behavior parity.
 
 ### Phase C: Core format engines
 - Status: Not started.
@@ -67,8 +69,8 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Added Python scaffold validation via `python -m unittest discover -s tests -p "test_*.py"`.
 
 ## 8) Edge cases that must be explicitly covered
-- Status: Not started.
-- No dedicated Python edge-case tests added yet.
+- Status: Started.
+- Added ZIP edge-case tests for invalid archives and no-file-entry archives.
 
 ## 9) Risk controls and rollback
 - Status: In progress.

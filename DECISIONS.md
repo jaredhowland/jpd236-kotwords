@@ -31,3 +31,8 @@
 - **Decision:** Add `unittest`-based async tests for `Puzzleable.as_puzzle()` and `DelegatingPuzzleable`.
 - **Reasoning:** Caching/delegation behavior is foundational and can regress silently without direct tests.
 - **Consequence:** Python scaffold work now has a direct parity guardrail while remaining dependency-free.
+
+### Decision 7: Introduce ZIP abstraction before parser ports
+- **Decision:** Add Python `Zip` helpers and `InvalidZipError` with Kotlin-matching unzip failure messages.
+- **Reasoning:** Multiple future formats (JPZ/RGZ and compressed payload adapters) depend on predictable ZIP semantics.
+- **Consequence:** Parser ports can share one tested unzip path and consistent exception mapping from the start.
