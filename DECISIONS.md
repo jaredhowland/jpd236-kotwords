@@ -46,3 +46,13 @@
 - **Decision:** Add dedicated Python tests for spiral-family clue grouping and word-id generation.
 - **Reasoning:** These models have non-trivial numbering/grouping behavior that can silently regress without direct tests.
 - **Consequence:** The migration now has stronger parity guardrails while remaining dependency-free and fast to run.
+
+### Decision 10: Port row-wrapping and overlap-driven variants next
+- **Decision:** Port `AroundTheBend` and `SnakeCharmer` into the Python scaffold before larger grid-rendering variants.
+- **Reasoning:** Both models add distinct parity behaviors (row wrapping and coordinate overlap conflict checks) while staying independent of PDF/web dependencies.
+- **Consequence:** Additional non-rectangular and multi-number cell semantics are now covered earlier in migration phases.
+
+### Decision 11: Add fixture-inspired Python contract tests for new variants
+- **Decision:** Add focused Python tests validating AroundTheBend word wrapping and SnakeCharmer overlap/numbering behavior.
+- **Reasoning:** These variants rely on subtle coordinate transforms that are easy to break without direct assertions.
+- **Consequence:** Future parser/model ports can reuse these tests as parity guardrails without external dependencies.

@@ -16,6 +16,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Started with core model scaffolding (`kotwords_py/model`) and conversion abstraction (`kotwords_py/formats`).
 - Added shared ZIP abstraction parity for compressed format support (`kotwords_py/formats/zip_file.py`).
 - Added spiral-family model parity scaffolding (`Spiral`, `TwoTone`, `JellyRoll`) with shared traversal helpers (`kotwords_py/model/spiral_grid.py`).
+- Added row/coordinate-variant parity scaffolding (`AroundTheBend`, `SnakeCharmer`) for wrapped rows and overlapping path models.
 - Format engines, CLI, and web parity are not implemented yet.
 
 ## 3) Baseline inventory (must be frozen before migration)
@@ -41,6 +42,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Status: Started.
 - Implemented initial Python model primitives for `Puzzle` and `Crossword` flows.
 - Implemented Python spiral-based model converters (`Spiral`, `TwoTone`, `JellyRoll`) and supporting spiral-grid traversal utilities.
+- Implemented Python `AroundTheBend` and `SnakeCharmer` model converters with Kotlin-aligned numbering and overlap validation behavior.
 - Added Python async contract tests for base conversion caching behavior.
 
 ### Phase B: Platform abstraction equivalents
@@ -49,6 +51,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Added `DelegatingPuzzleable` abstraction parity for composed puzzle containers.
 - Added Python `Zip.zip()` / `Zip.unzip()` and `InvalidZipError` behavior parity.
 - Added reusable Python spiral coordinate generation for parity across spiral-derived models.
+- Added Python parity implementations for row-wrapping (`AroundTheBend`) and overlap-mapped (`SnakeCharmer`) model generation.
 
 ### Phase C: Core format engines
 - Status: Not started.
@@ -75,6 +78,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Status: Started.
 - Added ZIP edge-case tests for invalid archives and no-file-entry archives.
 - Added spiral-variant model tests validating clue grouping and word-id generation for Spiral/TwoTone/JellyRoll scaffolds.
+- Added variant tests validating AroundTheBend wraparound word coordinates and SnakeCharmer overlap/dual-number cell behavior.
 
 ## 9) Risk controls and rollback
 - Status: In progress.
