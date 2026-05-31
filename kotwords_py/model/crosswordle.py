@@ -32,7 +32,7 @@ class Crosswordle(Puzzleable):
         if not self.grid or any(len(row) != len(self.grid[0]) for row in self.grid):
             raise ValueError("All rows of the grid must have the same length")
         if len(self.grid[0]) != len(self.answer):
-            raise ValueError("Answer must have the same length as the grids")
+            raise ValueError("Answer must have the same length as the grid")
         if len(self.grid) != len(self.across_clues):
             raise ValueError(f"Have {len(self.grid)} rows but {len(self.across_clues)} across clues")
         if len(self.grid[0]) != len(self.down_clues):
