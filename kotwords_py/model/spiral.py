@@ -73,14 +73,14 @@ class Spiral(Puzzleable):
         inward_jpz_clues: list[Clue] = []
         i = 0
         for word_number, answer in enumerate(self.inward_answers):
-            cells = 0
+            cells_consumed = 0
             partial_answer = ""
             while len(partial_answer) < len(answer):
-                partial_answer += self._inward_cells[i + cells]
-                cells += 1
+                partial_answer += self._inward_cells[i + cells_consumed]
+                cells_consumed += 1
             if len(partial_answer) != len(answer):
                 raise ValueError("Answers must be split cleanly across answer chunks")
-            end_cell = i + cells
+            end_cell = i + cells_consumed
             words.append(
                 Word(
                     word_number + 1,
@@ -95,14 +95,14 @@ class Spiral(Puzzleable):
         outward_jpz_clues: list[Clue] = []
         i = len(self._outward_cells)
         for word_number, answer in enumerate(self.outward_answers):
-            cells = 0
+            cells_consumed = 0
             partial_answer = ""
             while len(partial_answer) < len(answer):
-                partial_answer += self._inward_cells[i - cells - 1]
-                cells += 1
+                partial_answer += self._inward_cells[i - cells_consumed - 1]
+                cells_consumed += 1
             if len(partial_answer) != len(answer):
                 raise ValueError("Answers must be split cleanly across answer chunks")
-            end_cell = i - cells
+            end_cell = i - cells_consumed
             words.append(
                 Word(
                     word_number + 101,

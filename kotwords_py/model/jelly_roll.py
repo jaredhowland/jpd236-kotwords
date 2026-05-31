@@ -72,7 +72,11 @@ class JellyRoll(Puzzleable):
                 numbered_squares.add(i)
                 remaining_squares_to_skip = len(answer)
                 position = i
-                while remaining_squares_to_skip > 0 or position % 4 not in included_modulos:
+                # Keep advancing until we've consumed the needed included-modulo squares and
+                # landed on the next included-modulo starting position.
+                while True:
+                    if remaining_squares_to_skip <= 0 and position % 4 in included_modulos:
+                        break
                     if position % 4 in included_modulos:
                         remaining_squares_to_skip -= 1
                     position += 1

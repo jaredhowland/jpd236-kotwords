@@ -27,8 +27,10 @@ class TwoTone(Puzzleable):
 
     def __post_init__(self) -> None:
         super().__init__()
-        split_answers = "".join(ch for i, ch in enumerate("".join(self.all_squares_answers)) if i % 2 == 0), "".join(
-            ch for i, ch in enumerate("".join(self.all_squares_answers)) if i % 2 == 1
+        all_letters = "".join(self.all_squares_answers)
+        split_answers = (
+            "".join(ch for i, ch in enumerate(all_letters) if i % 2 == 0),
+            "".join(ch for i, ch in enumerate(all_letters) if i % 2 == 1),
         )
 
         if len(self.all_squares_clues) != len(self.all_squares_answers):
