@@ -36,3 +36,13 @@
 - **Decision:** Add Python `Zip` helpers and `InvalidZipError` with Kotlin-matching unzip failure messages.
 - **Reasoning:** Multiple future formats (JPZ/RGZ and compressed payload adapters) depend on predictable ZIP semantics.
 - **Consequence:** Parser ports can share one tested unzip path and consistent exception mapping from the start.
+
+### Decision 8: Prioritize spiral-family model parity next
+- **Decision:** Port `Spiral`, `TwoTone`, and `JellyRoll` next, with a shared Python spiral-grid helper.
+- **Reasoning:** These model types share traversal/numbering behavior and provide broad parity value from one reusable primitive.
+- **Consequence:** Future spiral-derived model ports can reuse `spiral_grid` rather than re-implementing coordinate and border logic.
+
+### Decision 9: Validate scaffold parity with focused variant tests
+- **Decision:** Add dedicated Python tests for spiral-family clue grouping and word-id generation.
+- **Reasoning:** These models have non-trivial numbering/grouping behavior that can silently regress without direct tests.
+- **Consequence:** The migration now has stronger parity guardrails while remaining dependency-free and fast to run.
