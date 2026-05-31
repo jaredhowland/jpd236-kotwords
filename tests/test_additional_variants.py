@@ -57,7 +57,7 @@ class AdditionalVariantTests(unittest.IsolatedAsyncioTestCase):
                 clues=["Clue 1", "Clue 2", "Clue 3", "Clue 4"],
                 grid_coordinates=[(0, 0), (1, 0), (1, 1), (0, 1)],
             )
-        with self.assertRaisesRegex(ValueError, "Conflict at cell \\(1, 0\\)"):
+        with self.assertRaisesRegex(ValueError, r"Conflict at cell \(1, 0\)"):
             await puzzleable.as_puzzle()
 
 
