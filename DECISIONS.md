@@ -71,3 +71,8 @@
 - **Decision:** Implement Python `HelterSkelter` with both explicit `AnswerVector` support and Kotlin-style auto-vector inference.
 - **Reasoning:** It adds a distinct directional path-finding model that increases parity coverage while staying independent of parser/PDF/web dependencies.
 - **Consequence:** Python scaffolding now includes validated vector ambiguity/not-found guardrails and supports edge-extension semantics for future variant and adapter ports.
+
+### Decision 15: Port patch-partition grid semantics before format engines
+- **Decision:** Implement Python `Patchwork` model conversion now, including row clues, piece clues, and per-cell border generation between pieces.
+- **Reasoning:** Patchwork introduces unique piece-boundary semantics and clue/word mapping that can be ported and validated without parser or rendering dependencies.
+- **Consequence:** Python parity coverage now includes partitioned-grid behavior and optional unlabeled-piece output logic needed by future format exports.

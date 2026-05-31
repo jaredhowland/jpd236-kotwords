@@ -19,6 +19,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Added row/coordinate-variant parity scaffolding (`AroundTheBend`, `SnakeCharmer`) for wrapped rows and overlapping path models.
 - Added coded-grid and crosswordle variant parity scaffolding (`Coded`, `Crosswordle`) and downs-only clue-clearing parity helper (`DownsOnly`).
 - Added directional-vector model parity scaffolding (`HelterSkelter`) for explicit and auto-detected answer paths.
+- Added piece-partition model parity scaffolding (`Patchwork`) with row/piece clue generation and boundary-border semantics.
 - Format engines, CLI, and web parity are not implemented yet.
 
 ## 3) Baseline inventory (must be frozen before migration)
@@ -48,6 +49,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Implemented Python `Coded` and `Crosswordle` converters, including given-letter hints, crosswordle cell-state coloring, and synthetic answer-row numbering semantics.
 - Added Python downs-only clue-clearing helper parity (`DownsOnly`) with grid-stat heuristic matching Kotlin selection rules.
 - Implemented Python `HelterSkelter` converter with Kotlin-aligned vector validation, auto-vector inference, and edge-extension behavior.
+- Implemented Python `Patchwork` converter with Kotlin-aligned piece boundary borders, row labeling, and optional unlabeled-piece output behavior.
 - Added Python async contract tests for base conversion caching behavior.
 
 ### Phase B: Platform abstraction equivalents
@@ -87,6 +89,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Added variant tests validating AroundTheBend wraparound word coordinates and SnakeCharmer overlap/dual-number cell behavior.
 - Added variant tests covering Coded mapping/givens, Crosswordle status coloring/word IDs, and DownsOnly clue-clearing + validation behavior.
 - Added variant tests covering HelterSkelter explicit vector paths, auto-vector inference, ambiguity detection, and validation guardrails.
+- Added variant tests covering Patchwork piece numbering coverage validation, row clue joining, boundary borders, and unlabeled-piece output behavior.
 
 ## 9) Risk controls and rollback
 - Status: In progress.
