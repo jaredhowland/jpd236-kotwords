@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 from kotwords_py.formats.puzzleable import Puzzleable
 from kotwords_py.model.puzzle import BorderDirection, Cell, Clue, ClueList, Coordinate, Puzzle, Word
@@ -53,9 +53,7 @@ class Crossword(Puzzleable):
 
         numbered_grid = [
             [
-                Cell(**{**cell.__dict__, "number": str(grid_numbers[(x, y)])})
-                if (x, y) in grid_numbers
-                else cell
+                replace(cell, number=str(grid_numbers[(x, y)])) if (x, y) in grid_numbers else cell
                 for x, cell in enumerate(row)
             ]
             for y, row in enumerate(self.grid)
@@ -85,7 +83,7 @@ class Crossword(Puzzleable):
         use_borders: bool = True,
     ) -> list[tuple[bool, int, str, list[Coordinate]]]:
         clues: list[tuple[bool, int, str, list[Coordinate]]] = []
-        for x, y, clue_number, is_across, is_down, _ in cls.for_each_cell(grid, use_borders):
+        for x, y, clue_number, is_across, is_down, _cell in cls.for_each_cell(grid, use_borders):
             if is_across:
                 word: list[Coordinate] = []
                 i = x
