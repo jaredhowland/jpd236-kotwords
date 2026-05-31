@@ -85,7 +85,7 @@ class Crossword(Puzzleable):
         use_borders: bool = True,
     ) -> list[tuple[bool, int, str, list[Coordinate]]]:
         clues: list[tuple[bool, int, str, list[Coordinate]]] = []
-        for x, y, clue_number, is_across, is_down, _ in cls.for_each_cell(grid, use_borders):
+        for x, y, clue_number, is_across, is_down in cls.for_each_cell(grid, use_borders):
             if is_across:
                 word: list[Coordinate] = []
                 i = x
@@ -113,13 +113,13 @@ class Crossword(Puzzleable):
         cls,
         grid: list[list[Cell]],
         use_borders: bool = True,
-    ) -> list[tuple[int, int, int | None, bool, bool, Cell]]:
-        cells: list[tuple[int, int, int | None, bool, bool, Cell]] = []
+    ) -> list[tuple[int, int, int | None, bool, bool]]:
+        cells: list[tuple[int, int, int | None, bool, bool]] = []
         current_clue_number = 1
         for y, row in enumerate(grid):
             for x, cell in enumerate(row):
                 if cell.cell_type.is_black():
-                    cells.append((x, y, None, False, False, cell))
+                    cells.append((x, y, None, False, False))
                     continue
                 is_across = cls.needs_across_number(grid, x, y, use_borders)
                 is_down = cls.needs_down_number(grid, x, y, use_borders)
@@ -127,7 +127,7 @@ class Crossword(Puzzleable):
                 if is_across or is_down:
                     clue_number = current_clue_number
                     current_clue_number += 1
-                cells.append((x, y, clue_number, is_across, is_down, cell))
+                cells.append((x, y, clue_number, is_across, is_down))
         return cells
 
     @classmethod
@@ -137,7 +137,7 @@ class Crossword(Puzzleable):
         use_borders: bool = True,
     ) -> list[tuple[int, int, int, bool, bool]]:
         numbered_cells: list[tuple[int, int, int, bool, bool]] = []
-        for x, y, clue_number, is_across, is_down, _ in cls.for_each_cell(grid, use_borders):
+        for x, y, clue_number, is_across, is_down in cls.for_each_cell(grid, use_borders):
             if clue_number is not None:
                 numbered_cells.append((x, y, clue_number, is_across, is_down))
         return numbered_cells
