@@ -114,6 +114,7 @@ class Puzzle(Puzzleable):
     diagramless: bool = False
 
     def __post_init__(self) -> None:
+        # Dataclass-generated __init__ does not call parent __init__, so initialize Puzzleable cache state here.
         super().__init__()
 
     async def create_puzzle(self) -> "Puzzle":

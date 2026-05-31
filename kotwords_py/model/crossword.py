@@ -7,6 +7,8 @@ from dataclasses import dataclass, replace
 from kotwords_py.formats.puzzleable import Puzzleable
 from kotwords_py.model.puzzle import BorderDirection, Cell, Clue, ClueList, Coordinate, Puzzle, Word
 
+DOWN_CLUE_ID_OFFSET = 1000
+
 
 @dataclass
 class Crossword(Puzzleable):
@@ -44,7 +46,7 @@ class Crossword(Puzzleable):
             self.grid, self.across_clues, self.down_clues
         ):
             clue_list = across_puzzle_clues if is_across else down_puzzle_clues
-            word_id = clue_number if is_across else clue_number + 1000
+            word_id = clue_number if is_across else clue_number + DOWN_CLUE_ID_OFFSET
             clue_list.append(Clue(word_id=word_id, number=str(clue_number), text=clue))
             words.append(Word(id=word_id, cells=tuple(cells)))
 
@@ -83,7 +85,7 @@ class Crossword(Puzzleable):
         use_borders: bool = True,
     ) -> list[tuple[bool, int, str, list[Coordinate]]]:
         clues: list[tuple[bool, int, str, list[Coordinate]]] = []
-        for x, y, clue_number, is_across, is_down, _cell in cls.for_each_cell(grid, use_borders):
+        for x, y, clue_number, is_across, is_down, _ in cls.for_each_cell(grid, use_borders):
             if is_across:
                 word: list[Coordinate] = []
                 i = x
