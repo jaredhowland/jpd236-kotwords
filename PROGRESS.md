@@ -18,6 +18,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Added spiral-family model parity scaffolding (`Spiral`, `TwoTone`, `JellyRoll`) with shared traversal helpers (`kotwords_py/model/spiral_grid.py`).
 - Added row/coordinate-variant parity scaffolding (`AroundTheBend`, `SnakeCharmer`) for wrapped rows and overlapping path models.
 - Added coded-grid and crosswordle variant parity scaffolding (`Coded`, `Crosswordle`) and downs-only clue-clearing parity helper (`DownsOnly`).
+- Added directional-vector model parity scaffolding (`HelterSkelter`) for explicit and auto-detected answer paths.
 - Format engines, CLI, and web parity are not implemented yet.
 
 ## 3) Baseline inventory (must be frozen before migration)
@@ -46,6 +47,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Implemented Python `AroundTheBend` and `SnakeCharmer` model converters with Kotlin-aligned numbering and overlap validation behavior.
 - Implemented Python `Coded` and `Crosswordle` converters, including given-letter hints, crosswordle cell-state coloring, and synthetic answer-row numbering semantics.
 - Added Python downs-only clue-clearing helper parity (`DownsOnly`) with grid-stat heuristic matching Kotlin selection rules.
+- Implemented Python `HelterSkelter` converter with Kotlin-aligned vector validation, auto-vector inference, and edge-extension behavior.
 - Added Python async contract tests for base conversion caching behavior.
 
 ### Phase B: Platform abstraction equivalents
@@ -84,6 +86,7 @@ This document tracks implementation progress against `/tmp/workspace/jaredhowlan
 - Added spiral-variant model tests validating clue grouping and word-id generation for Spiral/TwoTone/JellyRoll scaffolds.
 - Added variant tests validating AroundTheBend wraparound word coordinates and SnakeCharmer overlap/dual-number cell behavior.
 - Added variant tests covering Coded mapping/givens, Crosswordle status coloring/word IDs, and DownsOnly clue-clearing + validation behavior.
+- Added variant tests covering HelterSkelter explicit vector paths, auto-vector inference, ambiguity detection, and validation guardrails.
 
 ## 9) Risk controls and rollback
 - Status: In progress.

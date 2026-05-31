@@ -66,3 +66,8 @@
 - **Decision:** Implement Python `DownsOnly` with Kotlin-aligned clue-direction heuristic and clue-clearing behavior.
 - **Reasoning:** This utility is a standalone transformation used on already-built puzzles and is inexpensive to port with strong parity value.
 - **Consequence:** Python model flows can now reproduce down-clues-only generation semantics and include direct guardrail tests for conversion preconditions.
+
+### Decision 14: Port HelterSkelter vector resolution before format engines
+- **Decision:** Implement Python `HelterSkelter` with both explicit `AnswerVector` support and Kotlin-style auto-vector inference.
+- **Reasoning:** It adds a distinct directional path-finding model that increases parity coverage while staying independent of parser/PDF/web dependencies.
+- **Consequence:** Python scaffolding now includes validated vector ambiguity/not-found guardrails and supports edge-extension semantics for future variant and adapter ports.
