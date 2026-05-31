@@ -21,7 +21,9 @@ class ZipTests(unittest.IsolatedAsyncioTestCase):
     async def test_unzip_raises_when_no_file_entries(self) -> None:
         zip_bytes = BytesIO()
         with zipfile.ZipFile(zip_bytes, mode="w", compression=zipfile.ZIP_DEFLATED) as archive:
-            archive.writestr("folder/", "")
+            directory = zipfile.ZipInfo("folder/")
+            directory.external_attr = 0o040755 << 16
+            archive.writestr(directory, "")
 
         with self.assertRaisesRegex(InvalidZipError, "No file entry in ZIP file"):
             await Zip.unzip(zip_bytes.getvalue())
