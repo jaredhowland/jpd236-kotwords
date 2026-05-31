@@ -56,3 +56,13 @@
 - **Decision:** Add focused Python tests validating AroundTheBend word wrapping and SnakeCharmer overlap/numbering behavior.
 - **Reasoning:** These variants rely on subtle coordinate transforms that are easy to break without direct assertions.
 - **Consequence:** Future parser/model ports can reuse these tests as parity guardrails without external dependencies.
+
+### Decision 12: Add coded and crosswordle parity before format engines
+- **Decision:** Port `Coded` and `Crosswordle` model builders into the Python scaffold now.
+- **Reasoning:** They add distinct grid-state behavior (substitution hints and wordle-style match coloring) while remaining isolated from format-writer dependencies.
+- **Consequence:** The migration now covers additional model semantics and can validate more variant-specific behavior without waiting on parser ports.
+
+### Decision 13: Add downs-only clue transformation helper parity
+- **Decision:** Implement Python `DownsOnly` with Kotlin-aligned clue-direction heuristic and clue-clearing behavior.
+- **Reasoning:** This utility is a standalone transformation used on already-built puzzles and is inexpensive to port with strong parity value.
+- **Consequence:** Python model flows can now reproduce down-clues-only generation semantics and include direct guardrail tests for conversion preconditions.
